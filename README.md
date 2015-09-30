@@ -1,4 +1,4 @@
-
+[![Build Status](https://travis-ci.org/sixapart/Mojolicious-Plugin-ClientIP.svg?branch=master)](https://travis-ci.org/sixapart/Mojolicious-Plugin-ClientIP)
 # NAME
 
 Mojolicious::Plugin::ClientIP - Get client's IP address from X-Forwarded-For

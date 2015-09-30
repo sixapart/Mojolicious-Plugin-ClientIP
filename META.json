@@ -53,6 +53,17 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/sixapart/Mojolicious-Plugin-ClientIP/issues"
+      },
+      "homepage" : "https://github.com/sixapart/Mojolicious-Plugin-ClientIP",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/sixapart/Mojolicious-Plugin-ClientIP.git",
+         "web" : "https://github.com/sixapart/Mojolicious-Plugin-ClientIP"
+      }
+   },
    "version" : "0.01",
    "x_authority" : "cpan:SIXAPART",
    "x_contributors" : [
