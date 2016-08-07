@@ -36,7 +36,7 @@ Specify IP list to be ignored with ArrayRef.
 
 # LICENSE
 
-Copyright (C) Six Apart, Ltd. <sixapart@cpan.org>
+Copyright (C) Six Apart Ltd. <sixapart@cpan.org>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
