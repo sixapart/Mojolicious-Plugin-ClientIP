@@ -115,7 +115,7 @@ Specify IP list to be ignored with ArrayRef.
 
 =head1 LICENSE
 
-Copyright (C) Six Apart, Ltd. E<lt>sixapart@cpan.orgE<gt>
+Copyright (C) Six Apart Ltd. E<lt>sixapart@cpan.orgE<gt>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
