@@ -4,7 +4,7 @@ use Mojo::Base 'Mojolicious::Plugin';
 
 our $VERSION = '0.01';
 
-has 'ignore';
+has 'ignore' => sub { [ qw(127.0.0.0/8 10.0.0.0/8 172.16.0.0./12 192.168.0.0/16) ] };
 
 sub register {
     my $self = shift;
@@ -37,8 +37,7 @@ sub _find {
     state $octet = '(?:25[0-5]|2[0-4][0-9]|[0-1]?[0-9]{1,2})';
     state $ip4   = qr/\A$octet\.$octet\.$octet\.$octet\z/;
     state $ignore = [
-        qw(127.0.0.0/8 10.0.0.0/8 172.16.0.0./12 192.168.0.0/16),
-        @{$self->ignore // []},
+        @{$self->ignore // [] },
     ];
 
     for (@$candidates) {
@@ -112,6 +111,12 @@ Find a client IP address from X-Forwarded-For. Private network addresses in XFF 
 Specify IP list to be ignored with ArrayRef.
 
     plugin 'ClientIP', ignore => [qw(192.0.2.1 192.0.2.16/28)];
+
+By default the list is set to
+
+    qw(127.0.0.0/8 10.0.0.0/8 172.16.0.0./12 192.168.0.0/16)
+
+when you set ignore, this will overwrite the default list.
 
 =head1 LICENSE
 

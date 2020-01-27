@@ -2,6 +2,9 @@ Revision history for Perl extension Mojolicious-Plugin-ClientIP
 
 {{$NEXT}}
 
+   - ignore now overwrite the default list
+   [ backward compatibility issue ]
+
 0.01 2015-10-01T02:14:25Z
 
     - original version
