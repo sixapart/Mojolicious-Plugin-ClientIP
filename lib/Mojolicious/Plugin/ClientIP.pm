@@ -36,7 +36,7 @@ sub _find {
 
     state $octet = '(?:25[0-5]|2[0-4][0-9]|[0-1]?[0-9]{1,2})';
     state $ip4   = qr/\A$octet\.$octet\.$octet\.$octet\z/;
-    state $ignore = [
+    my $ignore = [
         @{$self->ignore // [] },
     ];
 
