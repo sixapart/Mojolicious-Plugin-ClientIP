@@ -2,6 +2,8 @@ Revision history for Perl extension Mojolicious-Plugin-ClientIP
 
 {{$NEXT}}
 
+    - Added support for overwriting private IP address list
+
 0.01 2015-10-01T02:14:25Z
 
     - original version
