@@ -10,9 +10,10 @@ sub register {
     my $self = shift;
     my ($app, $conf) = @_;
 
-    if ($conf->{ignore}) {
-        $self->ignore($conf->{ignore});
-    }
+    $self->ignore([
+        @{$conf->{private} || [qw(127.0.0.0/8 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16) ]},
+        @{$conf->{ignore} || []}
+    ]);
 
     $app->helper(client_ip => sub {
         my ($c) = @_;
@@ -36,14 +37,10 @@ sub _find {
 
     state $octet = '(?:25[0-5]|2[0-4][0-9]|[0-1]?[0-9]{1,2})';
     state $ip4   = qr/\A$octet\.$octet\.$octet\.$octet\z/;
-    state $ignore = [
-        qw(127.0.0.0/8 10.0.0.0/8 172.16.0.0./12 192.168.0.0/16),
-        @{$self->ignore // []},
-    ];
 
     for (@$candidates) {
         next unless /$ip4/;
-        next if _match($_, $ignore);
+        next if _match($_, $self->ignore);
         return $_;
     }
 
@@ -112,6 +109,14 @@ Find a client IP address from X-Forwarded-For. Private network addresses in XFF 
 Specify IP list to be ignored with ArrayRef.
 
     plugin 'ClientIP', ignore => [qw(192.0.2.1 192.0.2.16/28)];
+
+=head2 private
+
+Specify IP list which is handled as private IP address.
+This is a optional parameter.
+Default values are C<[qw(127.0.0.0/8 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16)]> as defined in RFC 1918.
+
+    plugin 'ClientIP', ignore => [qw(192.0.2.16/28)], private => [qw(10.0.0.0/8)];
 
 =head1 LICENSE
 
